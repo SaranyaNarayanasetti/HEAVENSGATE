@@ -9,6 +9,7 @@
 <%@ page import="java.util.*"%>
 	<%@ page import="com.example.entity.*"%>
 	<%@ page import="com.example.services.*"%>
+	<%@ page import="java.lang. *" %>
 <!-- General CSS Files -->
 <link rel="stylesheet" href="modules/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="modules/fontawesome/css/all.min.css">
@@ -132,7 +133,10 @@
                             <h4>Total Count</h4>
                         </div>
                         <div class="card-body">
-                            <%int c= (int) request.getAttribute("usercount"); %><%=c%>
+                          <p>  <%Integer ucount=(Integer) request.getAttribute("usercount"); 
+                              int uc=0;
+                             if(ucount!=null)
+                              uc=(int)ucount; %><%=uc%><p>
                         </div>
                         </div>
                     </div>
@@ -153,7 +157,10 @@
                                 <h4>Total Count</h4>
                             </div>
                             <div class="card-body">
-                                <%int rc= (int) request.getAttribute("roomscount"); %><%=rc%>
+                                <p><%Integer rcount= (Integer)request.getAttribute("roomscount");
+                                int rc=0;
+                                if(rcount!=null)
+                                rc=rcount; %><%=rc%></p>
                             </div>
                             </div>
                         </div>
@@ -174,7 +181,10 @@
                                 <h4>Total Count</h4>
                             </div>
                             <div class="card-body">
-                                <%int vc= (int) request.getAttribute("villahcount"); %><%=vc%>
+                          <p>      <%Integer vcount= (Integer) request.getAttribute("villahcount"); 
+                                      int vc=0;
+                                      if(vcount!=null)
+                                      vc=vcount; %><%=vc%></p>
                             </div>
                             </div>
                         </div>
@@ -212,9 +222,8 @@
   @SuppressWarnings("unchecked") 
   List<Homes> list = (List<Homes>) request.getAttribute("allhomes"); %>
  
-      <% 
-        for (Homes h : list) { 
-         
+      <% if(list!=null){
+        for (Homes h : list) {       
       %> 
       <tr> 
         <td><%=h.getId() %></td>
@@ -225,7 +234,7 @@
         <td><%=h.getLocation()%></td>
        </tr>
        <% 
-        } 
+        } }
       %>
        </tbody>
                                     </table>
